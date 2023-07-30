@@ -7,9 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Rest Api website">
-    <meta name="author" content="Alip">
+    <meta name="author" content="Ekuzika">
     <meta property="og:image" content="https://telegra.ph/file/f492065d44c897cd3836e.png">
-    <title>Alpis API │ Docs</title>
+    <title>Ekuzika API │ Docs</title>
     <script src="https://kit.fontawesome.com/5367cb78eb.js" crossorigin="anonymous"></script>
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
@@ -35,10 +35,10 @@
                 <a class="nav-link" >
                     <span>Username: <%= username %><br></span>
                                         <% if(!verified){ %>
-                                            <span class="h5 mb-0 font-weight-bold">Not Verified❌<br></span>
+                                            <span class="h5 mb-0 font-weight-bold">Not Verified ❌<br></span>
 
                                             <% }else{ %>
-                                                <span class="h5 mb-0 font-weight-bold">Verified✔️<br></span>
+                                                <span class="h5 mb-0 font-weight-bold">Verified ✔️<br></span>
                                             <% } %>
 
                 </a>
@@ -192,6 +192,12 @@
                         <a class="collapse-item" href="api/randomgambar/couplepp?apikey=<%= apikey %>" target="_blank">Couple pp</a>
                         <a class="collapse-item" href="api/randomgambar/dadu?apikey=<%= apikey %>" target="_blank">Dadu</a>
                         <a class="collapse-item" href="api/randomgambar/coffee?apikey=<%= apikey %>" target="_blank">Coffee</a>
+                        <a class="collapse-item" href="api/randomgambar/cecan/china?apikey=<%= apikey %>" target="_blank">China</a>
+                        <a class="collapse-item" href="api/randomgambar/cecan/vietnam?apikey=<%= apikey %>" target="_blank">Vietnam</a>
+                        <a class="collapse-item" href="api/randomgambar/cecan/indonesia?apikey=<%= apikey %>" target="_blank">Indonesia</a>
+                        <a class="collapse-item" href="api/randomgambar/cecan/korea?apikey=<%= apikey %>" target="_blank">Korea</a>
+                        <a class="collapse-item" href="api/randomgambar/cecan/japan?apikey=<%= apikey %>" target="_blank">Japan</a>
+                    
                     </div>
                 </div>
             </li>
@@ -224,6 +230,7 @@
                 <div id="collapseMaker" class="collapse" aria-labelledby="headingTable" data-parent="#accordionSidebar">
                     <div class="py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Image Manipulation</h6>
+                        <a class="collapse-item" target="_blank" href="api/maker/toanime?url=https://telegra.ph/file/890e70a7397b2e94db57f.png&apikey=<%= apikey %>">Toanime</a>
                         <a class="collapse-item" target="_blank" href="api/maker/circle?url=https://i.pinimg.com/564x/b8/a8/e2/b8a8e281f1a3113630671742b5677c15.jpg&apikey=<%= apikey %>">Circle</a>
                         <a class="collapse-item" target="_blank" href="api/maker/beautiful?url=https://i.pinimg.com/564x/b8/a8/e2/b8a8e281f1a3113630671742b5677c15.jpg&apikey=<%= apikey %>">Beautiful</a>
                         <a class="collapse-item" target="_blank" href="api/maker/blur?url=https://i.pinimg.com/564x/b8/a8/e2/b8a8e281f1a3113630671742b5677c15.jpg&apikey=<%= apikey %>">Blur</a>
