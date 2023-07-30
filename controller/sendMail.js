@@ -19,9 +19,9 @@ module.exports.sendResetEmail = async (email, token) => {
   var url = `http://${domain}/reset-password?token=` + token;
 
   await smtpTransport.sendMail({
-    from: fromsendemail,
+    from: 'Ekuzika <no-reply@gmail.com>',
     to: email,
-    subject: "MENETAPKAN SEMULA KATA LALUAN ANDA",
+    subject: "MENETAPKAN SEMULA KATA SANDI ANDA",
     html: `
     <!DOCTYPE html>
     <html>
@@ -128,7 +128,7 @@ module.exports.sendResetEmail = async (email, token) => {
             <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
               <tr>
                 <td align="left" bgcolor="#ffffff" style="padding: 36px 24px 0; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; border-top: 3px solid #d4dadf;">
-                  <h1 style="margin: 0; font-size: 32px; font-weight: 700; letter-spacing: -1px; line-height: 48px;">Menetapkan Semula Kata Laluan Anda</h1>
+                  <h1 style="margin: 0; font-size: 32px; font-weight: 700; letter-spacing: -1px; line-height: 48px;">Menetapkan Semula Kata sandi Anda</h1>
                 </td>
               </tr>
             </table>
@@ -144,7 +144,7 @@ module.exports.sendResetEmail = async (email, token) => {
               <tr>
                 <td align="left" bgcolor="#ffffff" style="padding: 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
                   <p style="margin: 0;">
-                    Masalah melog masuk?<br>Menetapkan semula kata laluan anda adalah mudah.<br><br>Hanya tekan butang di bawah dan ikut arahan. Kami akan membantu anda beroperasi dalam masa yang singkat.</p>
+                    Masalah saat login?<br>Menetapkan semula kata sandi anda adalah mudah.<br><br>Hanya tekan button di bawah dan ikuti arahan. Kami akan membantu anda beroperasi dalam masa yang singkat.</p>
                 </td>
               </tr>
 
@@ -169,7 +169,7 @@ module.exports.sendResetEmail = async (email, token) => {
 
               <tr>
                 <td align="left" bgcolor="#ffffff" style="padding: 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px; border-bottom: 3px solid #d4dadf">
-                  <p style="margin: 0;">Aliff,<br> ${domain}</p>
+                  <p style="margin: 0;">Ekuzika,<br> ${domain}</p>
                 </td>
               </tr>
     
@@ -185,7 +185,7 @@ module.exports.sendResetEmail = async (email, token) => {
     
               <tr>
                 <td align="center" bgcolor="#e9ecef" style="padding: 12px 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 20px; color: #666;">
-                  <p style="margin: 0;">Jika anda tidak membuat permintaan ini, sila abaikan e-mel ini..</p>
+                  <p style="margin: 0;">Jika anda tidak membuat permintaan ini, sila abaikan e-mail ini..</p>
                 </td>
               </tr>
     
@@ -220,7 +220,7 @@ module.exports.sendVerifyEmail = async (email, token) => {
     var url = `http://${domain}/verifyemail?token=` + token;
 
   await smtpTransport.sendMail({
-    from: fromsendemail,
+    from: 'Ekuzika <no-reply@gmail.com>',
     to: email,
     subject: "SAHKAN EMAIL ANDA",
     html: `
@@ -329,7 +329,7 @@ module.exports.sendVerifyEmail = async (email, token) => {
             <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
               <tr>
                 <td align="left" bgcolor="#ffffff" style="padding: 36px 24px 0; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; border-top: 3px solid #d4dadf;">
-                  <h1 style="margin: 0; font-size: 32px; font-weight: 700; letter-spacing: -1px; line-height: 48px;">Sahkan Alamat E-mel Anda</h1>
+                  <h1 style="margin: 0; font-size: 32px; font-weight: 700; letter-spacing: -1px; line-height: 48px;">Sahkan Alamat E-mail Anda</h1>
                 </td>
               </tr>
             </table>
@@ -344,7 +344,7 @@ module.exports.sendVerifyEmail = async (email, token) => {
     
               <tr>
                 <td align="left" bgcolor="#ffffff" style="padding: 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
-                  <p style="margin: 0;">Terima kasih kerana guna rest api alpis, Sila tekan button di bawah untuk sahkan akaun anda.</p>
+                  <p style="margin: 0;">Terima kasih kerana guna rest api ekuzika, Sila tekan button di bawah untuk sahkan akaun anda.</p>
                 </td>
               </tr>
 
@@ -369,7 +369,7 @@ module.exports.sendVerifyEmail = async (email, token) => {
 
               <tr>
                 <td align="left" bgcolor="#ffffff" style="padding: 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px; border-bottom: 3px solid #d4dadf">
-                  <p style="margin: 0;">Aliff,<br> ${domain}</p>
+                  <p style="margin: 0;">Ekuzika,<br> ${domain}</p>
                 </td>
               </tr>
     
@@ -385,7 +385,7 @@ module.exports.sendVerifyEmail = async (email, token) => {
     
               <tr>
                 <td align="center" bgcolor="#e9ecef" style="padding: 12px 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 20px; color: #666;">
-                  <p style="margin: 0;">Anda menerima e-mel ini kerana kami menerima permintaan untuk pengesahan akaun untuk akaun anda. Jika anda tidak meminta pengesahan akaun anda boleh memadamkan e-mel ini dengan selamat.</p>
+                  <p style="margin: 0;">Anda menerima e-mail ini kerana kami menerima permintaan untuk pengesahan untuk akun anda. Jika anda tidak meminta pengesahan akan anda boleh memadamkan e-mail ini.</p>
                 </td>
               </tr>
     
