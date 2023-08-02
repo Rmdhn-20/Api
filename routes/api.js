@@ -1220,7 +1220,7 @@ router.get('/api/game/tembakkimia', cekKey, async (req, res, next) => {
 
 router.get('/api/maker/toanime', cekKey, async (req, res) => {
 	var text = req.query.url
-	if (!text) = return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter url" })
+	if (!text) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter url" })
 	var img = await isImageURL(text)
 	if (!img) return res.json({ status : false, creator : `${creator}`, message : "[!] cek kembali url image" })
 	const toanime = `https://xzn.wtf/api/toanime?url=${text}&apikey=ekuzika`
