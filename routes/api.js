@@ -22,6 +22,7 @@ const isNumber = require('is-number');
 const User = require('../model/user');
 const dataweb = require('../model/DataWeb');
 const dylux = require('api-dylux')
+const spotifyds = require('spotifyds-core')
 const router = express.Router()
 
 
@@ -80,13 +81,31 @@ async function limitapikey(apikey) {
 router.get('/api/dowloader/fbdown', cekKey, async (req, res, next) => {
 	var url = req.query.url
 	if (!url ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter url"})  
-alip.fbdown(url).then(data => {
-	if (!data.Normal_video ) return res.json(loghandler.noturl)
+dylux.fbdl(url).then(data => {
+	if (!data.videoUrl ) return res.json(loghandler.noturl)
 	limitapikey(req.query.apikey)
 	res.json({
 	status: true,
 	creator: `${creator}`,
 	result:	data
+	})
+	})
+	 .catch(e => {
+		res.json(loghandler.error)
+})
+})
+
+router.get('/api/dowloader/spotify', cekKey, async (req, res, next) => {
+	var url = req.query.text
+	if (!url ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter text"})  
+spotifyds.searchTrack(url).then(data => {
+	//if (!data.videoUrl ) return res.json(loghandler.noturl)
+	var spoti = data.items[0].item
+	limitapikey(req.query.apikey)
+	res.json({
+	status: true,
+	creator: `${creator}`,
+	result:	spoti
 	})
 	})
 	 .catch(e => {
@@ -116,35 +135,39 @@ router.get('/api/dowloader/tikok', cekKey, async (req, res, next) => {
 	var url = req.query.url
 	if (!url ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter url"})  
 
-alip.musically(url).then(data => {
-    if (!data) return res.json(loghandler.noturl)
+    try {
+	let tt = await fetchJson(`https://api.akuari.my.id/downloader/tiktok3?link=${url}`)
+	let urr = tt.hasil.download_mp4 || tt.hasil.download_mp4_hd || tt.download_mp4_watermark
+    if (!urr) return res.json(loghandler.noturl)
 	limitapikey(req.query.apikey)
 	res.json({
 	    status: true,
 	    creator: `${creator}`,
-	    result: data
+	    result: tt.hasil
 	})
-}).catch(e => {
+} catch(e) { 
 	res.json(loghandler.noturl)
-})
+}
 })
 
 router.get('/api/dowloader/igdowloader', cekKey, async (req, res, next) => {
 	var url = req.query.url
 	if (!url ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter url"})   
-	if (!/^((https|http)?:\/\/(?:www\.)?instagram\.com\/(p|tv|reel|stories)\/([^/?#&]+)).*/i.test(url)) return res.json(loghandler.noturl)
-
-	alip.igdl(url).then(async (data) => {
-		if (!data ) return res.json(loghandler.instgram) 
+	if (!/^((https|http)?:\/\/(?:www\.)?instagram\.com\/(p|tv|reel)\/([^/?#&]+)).*/i.test(url)) return res.json(loghandler.noturl)
+		try {
+		let igg = await fetchJson(`https://api.caliph.biz.id/api/ig?url=${url}&apikey=caliphkey`)
+		if (!igg.status == true ) return res.json(loghandler.instgram) 
 		limitapikey(req.query.apikey)
+		for (let med of igg.media) {
 		res.json({
 			status: true,
 	        creator: `${creator}`,
-			result: data
+			result: med
 	    })
-	}).catch(e => {
+		}
+	} catch(e) {
 		res.json(loghandler.noturl)
-    })
+		}
 })
 
 
@@ -1014,6 +1037,15 @@ router.get('/api/search/sfilemobi', cekKey, async (req, res, next) => {
 router.get('/api/randomgambar/cecan/china', cekKey, async (req, res, next) => {
 	var cecann = ["https://i.postimg.cc/QdncScPQ/1.jpg", "https://i.postimg.cc/zv1CK5Q4/10.jpg", "https://i.postimg.cc/4x3zzW84/11.jpg", "https://i.postimg.cc/pXCfhwJ1/12.jpg", "https://i.postimg.cc/brHQRWcr/13.jpg", "https://i.postimg.cc/zX8wfzKg/14.jpg", "https://i.postimg.cc/QM91zHGR/15.jpg", "https://i.postimg.cc/43DVRsXn/16.jpg", "https://i.postimg.cc/nrkDmmBQ/17.jpg", "https://i.postimg.cc/CLhDgvpC/18.jpg", "https://i.postimg.cc/fT8dTxMG/19.jpg", "https://i.postimg.cc/RFwfMy0d/2.jpg", "https://i.postimg.cc/nrZmM2jJ/20.jpg", "https://i.postimg.cc/dVDy7L1L/21.jpg", "https://i.postimg.cc/kMF8z0zX/22.jpg", "https://i.postimg.cc/VkTbXmr4/23.jpg", "https://i.postimg.cc/3wv0BV2h/24.jpg", "https://i.postimg.cc/V6PrHgFC/25.jpg", "https://i.postimg.cc/MT0MkBsr/26.jpg", "https://i.postimg.cc/RhM3v0yC/27.jpg", "https://i.postimg.cc/D0BS0T3r/28.jpg", "https://i.postimg.cc/VsRrDj0J/29.jpg", "https://i.postimg.cc/TY3ySpnC/3.jpg", "https://i.postimg.cc/NfCywB4Y/30.jpg", "https://i.postimg.cc/3RZRfTRs/31.jpg", "https://i.postimg.cc/HnZLH9b3/4.jpg", "https://i.postimg.cc/rFsmj7LH/5.jpg", "https://i.postimg.cc/4N03Swfx/6.jpg", "https://i.postimg.cc/66YqdtFR/7.jpg", "https://i.postimg.cc/rwtpXWsC/8.jpg", "https://i.postimg.cc/wB8j6vsK/9.jpg"]
     	var rescecan = cecann[Math.floor(Math.random() * cecann.length)]
+	var cecan = await getBuffer(rescecan)
+	limitapikey(req.query.apikey)
+	res.set({'Content-Type': 'image/webp'})
+	res.send(cecan)
+})
+
+router.get('/api/randomgambar/cecan/hijab', cekKey, async (req, res, next) => {
+	var cecann = await fetchJson(`https://api.caliph.biz.id/api/hijab?apikey=caliphkey`)
+	var rescecan = cecann.result
 	var cecan = await getBuffer(rescecan)
 	limitapikey(req.query.apikey)
 	res.set({'Content-Type': 'image/webp'})
