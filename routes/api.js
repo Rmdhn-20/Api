@@ -22,7 +22,6 @@ const isNumber = require('is-number');
 const User = require('../model/user');
 const dataweb = require('../model/DataWeb');
 const dylux = require('api-dylux')
-const spotifyds = require('spotifyds-core')
 const router = express.Router()
 
 
@@ -88,24 +87,6 @@ dylux.fbdl(url).then(data => {
 	status: true,
 	creator: `${creator}`,
 	result:	data
-	})
-	})
-	 .catch(e => {
-		res.json(loghandler.error)
-})
-})
-
-router.get('/api/dowloader/spotify', cekKey, async (req, res, next) => {
-	var url = req.query.text
-	if (!url ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter text"})  
-spotifyds.searchTrack(url).then(data => {
-	//if (!data.videoUrl ) return res.json(loghandler.noturl)
-	var spoti = data.items[0].item
-	limitapikey(req.query.apikey)
-	res.json({
-	status: true,
-	creator: `${creator}`,
-	result:	spoti
 	})
 	})
 	 .catch(e => {
