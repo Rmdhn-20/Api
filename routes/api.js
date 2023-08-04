@@ -139,12 +139,10 @@ router.get('/api/dowloader/igdowloader', cekKey, async (req, res, next) => {
 		let igg = await fetchJson(`https://api.caliph.biz.id/api/ig?url=${url}&apikey=caliphkey`)
 		if (!igg.status == true ) return res.json(loghandler.instgram) 
 		limitapikey(req.query.apikey)
-		for (let med of igg.media) {
 		res.json({
 			status: true,
 	        creator: `${creator}`,
-			result: med
-	    })
+			result: igg
 		}
 	} catch(e) {
 		res.json(loghandler.noturl)
