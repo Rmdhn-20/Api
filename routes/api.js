@@ -143,7 +143,7 @@ router.get('/api/dowloader/igdowloader', cekKey, async (req, res, next) => {
 			status: true,
 	        creator: `${creator}`,
 			result: igg
-		}
+		})
 	} catch(e) {
 		res.json(loghandler.noturl)
 		}
